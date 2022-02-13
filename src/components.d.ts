@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults } from "@stencil/router";
+import { CanvasEntity } from "./models/entity";
 export namespace Components {
     interface AppHome {
     }
@@ -15,6 +16,9 @@ export namespace Components {
     interface AppRoot {
     }
     interface RikiCanvas {
+    }
+    interface RikiEntity {
+        "e": CanvasEntity;
     }
 }
 declare global {
@@ -42,11 +46,18 @@ declare global {
         prototype: HTMLRikiCanvasElement;
         new (): HTMLRikiCanvasElement;
     };
+    interface HTMLRikiEntityElement extends Components.RikiEntity, HTMLStencilElement {
+    }
+    var HTMLRikiEntityElement: {
+        prototype: HTMLRikiEntityElement;
+        new (): HTMLRikiEntityElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
         "riki-canvas": HTMLRikiCanvasElement;
+        "riki-entity": HTMLRikiEntityElement;
     }
 }
 declare namespace LocalJSX {
@@ -59,11 +70,15 @@ declare namespace LocalJSX {
     }
     interface RikiCanvas {
     }
+    interface RikiEntity {
+        "e"?: CanvasEntity;
+    }
     interface IntrinsicElements {
         "app-home": AppHome;
         "app-profile": AppProfile;
         "app-root": AppRoot;
         "riki-canvas": RikiCanvas;
+        "riki-entity": RikiEntity;
     }
 }
 export { LocalJSX as JSX };
@@ -74,6 +89,7 @@ declare module "@stencil/core" {
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "riki-canvas": LocalJSX.RikiCanvas & JSXBase.HTMLAttributes<HTMLRikiCanvasElement>;
+            "riki-entity": LocalJSX.RikiEntity & JSXBase.HTMLAttributes<HTMLRikiEntityElement>;
         }
     }
 }

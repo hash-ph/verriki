@@ -1,0 +1,9 @@
+$background: #ffffff;
+$foreground: #a6a6a6;
+
+.riki-entity {
+  width: 100px;
+  height: 100px;
+  background-color: $background;
+  outline: 1px solid $foreground;
+}

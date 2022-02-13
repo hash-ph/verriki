@@ -1,4 +1,13 @@
-.canvas {
-  background-size: 40px 40px;
-  background-image: radial-gradient(circle, #000000 1px, rgba(0, 0, 0, 0) 1px);
+$foreground: #a6a6a6;
+$background: #fefefe;
+
+.riki-canvas {
+  width: 800px;
+  height: 600px;
+  background-size: 10px 10px;
+  background-image: radial-gradient(circle, $foreground 1px, $background 1px);
+}
+
+.float {
+  position: absolute;
 }
