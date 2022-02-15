@@ -1,1 +1,0 @@
-import{r as i,h as t}from"./p-bbba1366.js";let r=class{constructor(t){i(this,t),this.debug=""}render(){return t("div",{class:"riki-entity"},t("code",null,"Debssug: ",this.e.id))}};r.style=".riki-entity{width:100px;height:100px;background-color:#ffffff;outline:1px solid #a6a6a6}";export{r as riki_entity}
