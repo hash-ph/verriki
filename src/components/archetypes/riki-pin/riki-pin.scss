@@ -1,0 +1,12 @@
+$background: #fe3a3a;
+$foreground: #3e3e3e;
+
+.riki-pin {
+  width: 20px;
+  height: 20px;
+  background-color: $background;
+  outline: 1px solid $foreground;
+  border-radius: 100%;
+
+  z-index: 100;
+}

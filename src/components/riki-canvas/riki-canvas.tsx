@@ -1,5 +1,5 @@
 import { Component, h, Listen, State } from '@stencil/core';
-import { CanvasEntity } from '../../models/entity';
+import { CanvasEntity, CanvasEntityKind } from '../../models/entity';
 
 @Component({
   tag: 'riki-canvas',
@@ -12,15 +12,15 @@ export class RikiCanvas {
 
   @State()
   entities: CanvasEntity[] = [
-    { id: 'abcdef1', x: 20, y: 30 },
-    { id: 'abcdef2', x: 22, y: 32 },
-    { id: 'abcdef3', x: 24, y: 34 },
-    { id: 'abcdef4', x: 26, y: 36 },
-    { id: 'abcdef5', x: 28, y: 38 },
-    { id: 'abcdef6', x: 30, y: 40 },
-    { id: 'abcdef7', x: 32, y: 42 },
-    { id: 'abcdef8', x: 34, y: 44 },
-    { id: 'abcdef9', x: 36, y: 46 },
+    { id: 'abcdef1', x: 20, y: 30, kind: CanvasEntityKind.NOTES },
+    { id: 'abcdef2', x: 22, y: 32, kind: CanvasEntityKind.NOTES },
+    { id: 'abcdef3', x: 24, y: 34, kind: CanvasEntityKind.NOTES },
+    { id: 'abcdef4', x: 26, y: 36, kind: CanvasEntityKind.NOTES },
+    { id: 'abcdef5', x: 28, y: 38, kind: CanvasEntityKind.NOTES },
+    { id: 'abcdef6', x: 30, y: 40, kind: CanvasEntityKind.NOTES },
+    { id: 'abcdef7', x: 32, y: 42, kind: CanvasEntityKind.NOTES },
+    { id: 'abcdef8', x: 34, y: 44, kind: CanvasEntityKind.PIN },
+    { id: 'abcdef9', x: 36, y: 46, kind: CanvasEntityKind.PIN },
   ];
   @State()
   canvasOffset = { x: 0, y: 0 };
@@ -58,7 +58,7 @@ export class RikiCanvas {
       return;
     }
     this.isDragging = true;
-    event.preventDefault();
+    // event.preventDefault();
 
     this.focusedEntitiesIds.clear();
     if (target.tagName === 'RIKI-CANVAS') {

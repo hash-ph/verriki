@@ -1,0 +1,9 @@
+$background: #ffffff;
+$foreground: #a6a6a6;
+
+.riki-notes {
+  min-width: 100px;
+  min-height: 60px;
+  background-color: $background;
+  outline: 1px solid $foreground;
+}

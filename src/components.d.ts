@@ -20,6 +20,12 @@ export namespace Components {
     interface RikiEntity {
         "e": CanvasEntity;
     }
+    interface RikiNotes {
+        "e": CanvasEntity;
+    }
+    interface RikiPin {
+        "e": CanvasEntity;
+    }
 }
 declare global {
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
@@ -52,12 +58,26 @@ declare global {
         prototype: HTMLRikiEntityElement;
         new (): HTMLRikiEntityElement;
     };
+    interface HTMLRikiNotesElement extends Components.RikiNotes, HTMLStencilElement {
+    }
+    var HTMLRikiNotesElement: {
+        prototype: HTMLRikiNotesElement;
+        new (): HTMLRikiNotesElement;
+    };
+    interface HTMLRikiPinElement extends Components.RikiPin, HTMLStencilElement {
+    }
+    var HTMLRikiPinElement: {
+        prototype: HTMLRikiPinElement;
+        new (): HTMLRikiPinElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
         "riki-canvas": HTMLRikiCanvasElement;
         "riki-entity": HTMLRikiEntityElement;
+        "riki-notes": HTMLRikiNotesElement;
+        "riki-pin": HTMLRikiPinElement;
     }
 }
 declare namespace LocalJSX {
@@ -73,12 +93,20 @@ declare namespace LocalJSX {
     interface RikiEntity {
         "e"?: CanvasEntity;
     }
+    interface RikiNotes {
+        "e"?: CanvasEntity;
+    }
+    interface RikiPin {
+        "e"?: CanvasEntity;
+    }
     interface IntrinsicElements {
         "app-home": AppHome;
         "app-profile": AppProfile;
         "app-root": AppRoot;
         "riki-canvas": RikiCanvas;
         "riki-entity": RikiEntity;
+        "riki-notes": RikiNotes;
+        "riki-pin": RikiPin;
     }
 }
 export { LocalJSX as JSX };
@@ -90,6 +118,8 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "riki-canvas": LocalJSX.RikiCanvas & JSXBase.HTMLAttributes<HTMLRikiCanvasElement>;
             "riki-entity": LocalJSX.RikiEntity & JSXBase.HTMLAttributes<HTMLRikiEntityElement>;
+            "riki-notes": LocalJSX.RikiNotes & JSXBase.HTMLAttributes<HTMLRikiNotesElement>;
+            "riki-pin": LocalJSX.RikiPin & JSXBase.HTMLAttributes<HTMLRikiPinElement>;
         }
     }
 }

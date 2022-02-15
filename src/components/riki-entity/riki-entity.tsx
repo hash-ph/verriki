@@ -1,5 +1,5 @@
 import { Component, h, Prop, State } from '@stencil/core';
-import { CanvasEntity } from '../../models/entity';
+import { CanvasEntity, CanvasEntityKind } from '../../models/entity';
 
 @Component({
   tag: 'riki-entity',
@@ -13,7 +13,12 @@ export class RikiEntity {
   render() {
     return (
       <div class="riki-entity">
-        <code>Debssug: {this.e.id}</code>
+        {
+          {
+            [CanvasEntityKind.NOTES]: <riki-notes e={this.e} />,
+            [CanvasEntityKind.PIN]: <riki-pin e={this.e} />,
+          }[this.e.kind]
+        }
       </div>
     );
   }
