@@ -8,12 +8,19 @@ export class CanvasEntity {
   kind: CanvasEntityKind;
   x: number;
   y: number;
-  focused?: boolean;
+}
+
+export class CanvasEntityPin extends CanvasEntity {
+  pinnedTo?: string;
 }
 
 export class CanvasEdge {
   a: string;
+  ax: number;
+  ay: number;
   z: string;
+  zx: number;
+  zy: number;
 }
 
 export interface Content {

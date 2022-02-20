@@ -8,11 +8,12 @@ import { CanvasEntity, CanvasEntityKind } from '../../models/entity';
 })
 export class RikiEntity {
   @Prop() e: CanvasEntity;
+
   @State() debug = '';
 
   render() {
     return (
-      <div class="riki-entity">
+      <div class={`riki-entity`}>
         {
           {
             [CanvasEntityKind.NOTES]: <riki-notes e={this.e} />,

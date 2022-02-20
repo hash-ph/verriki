@@ -4,6 +4,8 @@ $foreground: #3e3e3e;
 .riki-pin {
   width: 20px;
   height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
   background-color: $background;
   outline: 1px solid $foreground;
   border-radius: 100%;
