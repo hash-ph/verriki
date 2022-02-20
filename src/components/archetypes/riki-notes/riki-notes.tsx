@@ -12,7 +12,7 @@ export class RikiNotes {
   render() {
     return (
       <div class="riki-notes">
-        <code contentEditable="true">Debssusg: {this.e.id}</code>
+        <code>Debssusg: {this.e.id}</code>
       </div>
     );
   }

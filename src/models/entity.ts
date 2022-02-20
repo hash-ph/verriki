@@ -8,6 +8,12 @@ export class CanvasEntity {
   kind: CanvasEntityKind;
   x: number;
   y: number;
+  focused?: boolean;
+}
+
+export class CanvasEdge {
+  a: string;
+  z: string;
 }
 
 export interface Content {

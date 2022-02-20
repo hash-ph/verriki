@@ -1,5 +1,15 @@
 import { Component, h, Listen, State } from '@stencil/core';
-import { CanvasEntity, CanvasEntityKind } from '../../models/entity';
+import { CanvasEdge, CanvasEntity, CanvasEntityKind } from '../../models/entity';
+import state from './store';
+
+function elementsUnderMouseEvent(event: MouseEvent) {
+  const relevantTags = ['RIKI-CANVAS', 'RIKI-ENTITY'];
+  const targets = event
+    .composedPath()
+    .filter((target: HTMLElement) => relevantTags.includes(target.tagName)) as HTMLElement[];
+  console.log(event.composedPath());
+  return targets;
+}
 
 @Component({
   tag: 'riki-canvas',
@@ -23,6 +33,9 @@ export class RikiCanvas {
     { id: 'abcdef9', x: 36, y: 46, kind: CanvasEntityKind.PIN },
   ];
   @State()
+  edges: CanvasEdge[] = [{ a: 'abcdef8', z: 'abcdef9' }];
+
+  @State()
   canvasOffset = { x: 0, y: 0 };
 
   focusedEntitiesIds = new Set<string>();
@@ -41,24 +54,12 @@ export class RikiCanvas {
       y: event.clientY,
     };
 
-    const relevantTags = ['RIKI-CANVAS', 'RIKI-ENTITY'].filter(tag => {
-      switch (event.button) {
-        case 0:
-          return tag === 'RIKI-ENTITY';
-        case 1:
-          return tag === 'RIKI-CANVAS';
-        default:
-          return false;
-      }
-    });
-    const target = event
-      .composedPath()
-      .find((target: HTMLElement) => relevantTags.includes(target.tagName)) as HTMLElement;
+    const target = elementsUnderMouseEvent(event)[0];
     if (!target) {
       return;
     }
     this.isDragging = true;
-    // event.preventDefault();
+    event.preventDefault();
 
     this.focusedEntitiesIds.clear();
     if (target.tagName === 'RIKI-CANVAS') {
@@ -71,6 +72,9 @@ export class RikiCanvas {
 
   @Listen('mousemove')
   handleMousemove(event: MouseEvent) {
+    // broadcast elements under mouse
+    state.elements = elementsUnderMouseEvent(event).map(e => e.tagName);
+
     if (!this.isDragging) {
       return;
     }
@@ -118,6 +122,7 @@ export class RikiCanvas {
           top: `${this.canvasOffset.y}px`,
         }}
       >
+        <div style={{ position: 'absolute' }}>{state.elements}</div>
         {this.entities.map(e => (
           <riki-entity
             style={{
@@ -129,6 +134,7 @@ export class RikiCanvas {
             e={e}
           ></riki-entity>
         ))}
+        <canvas></canvas>
       </div>
     );
   }
