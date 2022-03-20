@@ -1,0 +1,9 @@
+$foreground: #a6a6a6;
+$background: #fefefe;
+
+.riki-canvas {
+  width: 800px;
+  height: 600px;
+  background-size: 10px 10px;
+  background-image: radial-gradient(circle, $foreground 1px, $background 1px);
+}

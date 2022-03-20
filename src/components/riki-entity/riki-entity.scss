@@ -1,0 +1,9 @@
+$highlight: red;
+$hover: blue;
+
+.riki-entity {
+  &:hover {
+    outline: 2px solid $hover;
+    pointer-events: all;
+  }
+}
